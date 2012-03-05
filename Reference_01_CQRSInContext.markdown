@@ -1,13 +1,8 @@
-<style type="text/css">
-div.comment {margin-left:20px;margin-right:20px;}
-span.comment {background-color:yellow;}
-</style>
-
 ## Chapter 1
 # CQRS in Context (Chapter Title)
 
-<div class="comment">
-  <span class="comment">
+<div style="margin-left:20px;margin-right:20px;">
+  <span style="background-color:yellow;">
     <b>Comment [DRB]:</b>
 	This should be an introduction only, with plenty of references to
 	external resources.
@@ -89,8 +84,8 @@ expected to have a long life span. You are unlikely to see a return on
 your investment in DDD if you use it on small, simple, or short-term 
 projects. 
 
-<div class="comment">
-  <span class="comment">
+<div style="margin-left:20px;margin-right:20px;">
+  <span style="background-color:yellow;">
     <b>Comment [DRB]:</b>
 	Look for a suitable quote to use for the previous paragraph.
   </span>
@@ -360,8 +355,8 @@ However, many people can point to projects where they have seen real
 benefits from implementing the CQRS pattern, but where they have not 
 used the DDD approach for the domain analysis and model design. 
 
-<div class="comment">
-  <span class="comment">
+<div style="margin-left:20px;margin-right:20px;">
+  <span style="background-color:yellow;">
     <b>Comment [DRB]:</b>
 	Look for a suitable quote to use for the previous paragraph.
   </span>

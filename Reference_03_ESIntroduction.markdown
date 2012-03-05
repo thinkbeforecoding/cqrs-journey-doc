@@ -1,9 +1,3 @@
-<style type="text/css">
-div.comment {margin-left:20px;margin-right:20px;}
-span.comment {background-color:yellow;}
-</style>
-
-
 ## Chapter 3
 # Introducing Event Sourcing (Chapter Title)
 
@@ -296,8 +290,8 @@ ability to rebuild the application state, to mine the event history for
 new business data, and to simplify the data storage part of the 
 application are all valuable in some scenarios.
 
-<div class="comment">
-  <span class="comment">
+<div style="margin-left:20px;margin-right:20px;">
+  <span style="background-color:yellow;">
     <b>Comment [DRB]:</b>
 	Expand this section.
   </span>
@@ -305,8 +299,8 @@ application are all valuable in some scenarios.
 
 # Event Stores 
 
-<div class="comment">
-  <span class="comment">
+<div style="margin-left:20px;margin-right:20px;">
+  <span style="background-color:yellow;">
     <b>Comment [DRB]:</b>
 	To do.
   </span>
