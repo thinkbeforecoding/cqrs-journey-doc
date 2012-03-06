@@ -51,13 +51,6 @@ cloud, etc.
   for this bounded context? 
 - What trade-offs did we evaluate?
 - What alternatives did we consider?
-	
-# Implementation Details
-Describe significant features of the implementation with references to 
-the code. Highlight any specific technologies (including any relevant 
-trade-offs and alternatives). Provide significantly more detail for 
-those BCs that use CQRS/ES. Significantly less detail for more 
-"traditional" implementations such as CRUD.
 
 The team decided that they would try to implement the first bounded 
 context without using event sourcing in order to keep things simple. 
@@ -79,8 +72,8 @@ several seats at a conference. The system must:
 - Record details of the booking.
 - Update the total number of seats booked for the conference.
 
-> **Note:** The scenario is deliberately simple to avoid distractions
-  while we examine the alternatives.  
+> **Note:** The scenario is kept deliberately simple to avoid
+  distractions while the team examines the alternatives.  
 
 The first possible approach, shown in figure 1, uses two separate 
 aggregates. 
@@ -132,10 +125,10 @@ The numbers in the diagram correspond to the following steps:
 2. The **Conference** aggregate with an ID of 157 is re-hydrated from the
    data store.
 3. The **Booking** entity validates the booking (it queries the 
-   **Conference** entity to see if there are enough seats left), and
-   then invokes the method to update the number of seats booked on the
-   conference entity.
-4. The **Conference** entity updates its total number of seats
+   **Conference Capacity** entity to see if there are enough seats
+   left), and then invokes the method to update the number of seats
+   booked on the conference entity.
+4. The **Conference Capacity** entity updates its total number of seats
    booked.
 5. The updated version of the **Conference** aggregate is persisted to
    the data store.
@@ -144,8 +137,8 @@ The team identified these questions about the approach:
 
 - Which entity should be the aggregate root within the **Conference**
   aggregate?
-- What else will end up in the conference aggregate? Will it become too
-  large.
+- What else will end up in the **Conference aggregate**? Will it become
+  too large.
 - How does this approach handle multiple simultaneous bookings?
 
 The third possible approach, shown in figure 3, uses a saga to 
@@ -159,14 +152,14 @@ The numbers in the diagram correspond to the following steps:
 
 1. The UI sends a command to book X and Y onto conference #157. The 
    command is routed to a new **Booking** aggregate.
-2. The new **Booking**aggregate, with and ID of 4239,  is persisted to
+2. The new **Booking** aggregate, with and ID of 4239,  is persisted to
    the data store.
 3. The **Booking** aggregate raises an event that is handled by the
    **Booking** saga.
 4. The **Booking** saga determines that a command should be sent to the
    **Conference** aggregate with an ID of 157.
 5. The **Conference** aggregate is re-hydrated from the data store.
-6. The total number of sets booked is updated in the **Conference**
+6. The total number of seats booked is updated in the **Conference**
    aggregate  and it is persisted to the data store.
 
 
@@ -178,6 +171,13 @@ The team identified these questions about the approach:
   the conference aggregate?
 - How does this approach handle multiple users making simultaneous
   bookings?
+	
+# Implementation Details
+Describe significant features of the implementation with references to 
+the code. Highlight any specific technologies (including any relevant 
+trade-offs and alternatives). Provide significantly more detail for 
+those BCs that use CQRS/ES. Significantly less detail for more 
+"traditional" implementations such as CRUD.
 
 # Testing
 Describe any special considerations that relate to testing for this 
@@ -243,6 +243,8 @@ behavioural approach discussed above.
 
 The following code sample shows an example of a test written using the 
 state of the objects being tested. 
+
+[tddstyle]:		  http://martinfowler.com/articles/mocksArentStubs.html
 
 [fig1]:           images/Journey_03_Aggregates_01.png?raw=true
 [fig2]:           images/Journey_03_Aggregates_02.png?raw=true

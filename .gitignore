@@ -1,0 +1,5 @@
+# Ignore all Powershell scripts
+*.ps1
+
+# Ignore test Output file
+output.html
